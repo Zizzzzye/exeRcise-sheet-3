@@ -131,7 +131,11 @@ data_2023$Anzahl <- as.numeric(gsub("[^0-9]", "", data_2023$Anzahl))
 c)  Calculate the total number of babies born in Munich in 2022
     and 2023. Which year had the bigger baby-boom?
 ```{r}
+total_2022 <- sum(data_2022$Anzahl, na.rm = TRUE)
+total_2023 <- sum(data_2023$Anzahl, na.rm = TRUE)
 
+total_2022
+total_2023
 ```
 
 d)  Add a new column `year` to both datasets which holds the correct
