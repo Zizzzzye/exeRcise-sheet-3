@@ -173,20 +173,36 @@ determining the research question yourself.
 a)  Go to <https://github.com/owid/owid-datasets/tree/master/datasets>
     and choose a dataset that interests you. You can have a look at
     <https://ourworldindata.org/> to gather some inspiration.
+
 b)  Download the dataset and track it in git.
+
 c)  Put the name / title of the dataset and a link to it below.
 
--   Dataset Name: ...
--   Link: <https://github.com/owid/owid-datasets/>...
+-   Dataset Name: 20th century deaths in US - CDC
+-   Link: https://github.com/owid/owid-datasets/blob/master/datasets/20th%20century%20deaths%20in%20US%20-%20CDC/20th%20century%20deaths%20in%20US%20-%20CDC.csv
 
 d)  Come up with a (research) question you want to answer with the data
     and briefly explain why you believe this is an interesting question
     within one sentence. It should be a question that can be answered
     with the dataset and using R.
+```{r}
+#Question: What were the leading causes of death in the US at the end of the 20th century, and how #did they change over the decades?
+
+#Understanding the evolution of mortality causes over the century can highlight public health #successes and ongoing challenges, offering insights into the impact of medical advancements and #public health policies.
+```
+    
 e)  Use R to answer your chosen question.
+```{r}
+
+
+```
+
 f)  Create a meaningful plot / figure with the dataset. Make sure to
     provide a figure caption (via the chunk options / Rmarkdown) and
     correctly label the figure.
+```{r}
+
+```
 
 ## Final Note
 
