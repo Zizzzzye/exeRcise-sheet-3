@@ -178,23 +178,34 @@ b)  Download the dataset and track it in git.
 
 c)  Put the name / title of the dataset and a link to it below.
 
--   Dataset Name: 20th century deaths in US - CDC
--   Link: https://github.com/owid/owid-datasets/blob/master/datasets/20th%20century%20deaths%20in%20US%20-%20CDC/20th%20century%20deaths%20in%20US%20-%20CDC.csv
+-   Dataset Name: Air Pollutant Emissions - OECD.csv
+-   Link: https://github.com/owid/owid-datasets/tree/master/datasets/Air%20Pollutant%20Emissions%20-%20OECD
 
 d)  Come up with a (research) question you want to answer with the data
     and briefly explain why you believe this is an interesting question
     within one sentence. It should be a question that can be answered
     with the dataset and using R.
 ```{r}
-#Question: What were the leading causes of death in the US at the end of the 20th century, and how #did they change over the decades?
-
-#Understanding the evolution of mortality causes over the century can highlight public health #successes and ongoing challenges, offering insights into the impact of medical advancements and #public health policies.
+#Question: The top ten countries in alphabetical order by year with the highest Carbon Monoxide emissions.
 ```
     
 e)  Use R to answer your chosen question.
 ```{r}
+library(readr)
+library(dplyr)
+
+emissions_data <- read_csv("C:/Users/ziye/Desktop/SS24/StaProg2/2024-exeRcise-sheet-3/Air Pollutant Emissions - OECD.csv")
 
 
+top_countries_co_emissions <- emissions_data %>%
+  arrange(Entity) %>%
+  group_by(Entity) %>%
+  top_n(10, wt = Entity) %>%
+  summarise(Year_of_Max_Emission = Year[which.max(`Carbon Monoxide`)], 
+            Max_Emission = max(`Carbon Monoxide`)) %>%
+  slice_head(n = 10)
+
+print(top_countries_co_emissions)
 ```
 
 f)  Create a meaningful plot / figure with the dataset. Make sure to
