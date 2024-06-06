@@ -211,10 +211,30 @@ print(top_countries_co_emissions)
 f)  Create a meaningful plot / figure with the dataset. Make sure to
     provide a figure caption (via the chunk options / Rmarkdown) and
     correctly label the figure.
-```{r}
+```{r co-emissions-plot, fig.cap="Yearly Trends of Carbon Monoxide Emissions for the Top Ten Countries Alphabetically"}
+library(ggplot2)
+
+top_countries <- emissions_data %>%
+  arrange(Entity) %>%
+  group_by(Entity) %>%
+  slice_head(n = 1) %>%
+  pull(Entity) %>%
+  unique()
+
+top_countries_data <- emissions_data %>%
+  filter(Entity %in% top_countries)
+
+ggplot(top_countries_data, aes(x = Year, y = `Carbon Monoxide`, group = Entity, color = Entity)) +
+  geom_line() +
+  labs(title = "Carbon Monoxide Emissions Over Time",
+       subtitle = "Analysis of the top ten countries alphabetically",
+       x = "Year",
+       y = "Carbon Monoxide Emissions (in tonnes)",
+       color = "Country") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ```
-
 ## Final Note
 
 Make sure to push all your commits and changes to GitHub before
